@@ -1,4 +1,4 @@
-import React from 'react';
+import logo from '../assets/images/logo.png';
 import styled from 'styled-components';
 
 const HeaderContainer = styled.header`
@@ -14,42 +14,50 @@ const LogoContainer = styled.div`
   align-items: center;
 `;
 
-const LogoIcon = styled.img`
+const StyledLogoIcon = styled.img`
   width: 30px;
   height: 30px;
   margin-right: 10px;
 `;
 
-const LogoText = styled.h1`
-  font-size: 1.5rem;
-  margin: 0;
-`;
+const Header = () => {
+  const logoContainerStyle = {
+    display: 'flex',
+    alignItems: 'center',
+  };
 
-const AuthButtons = styled.div`
-  display: flex;
-  gap: 10px;
-`;
-
-const AuthButton = styled.button`
-  padding: 5px 10px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-`;
-
-const Header: React.FC = () => {
   return (
     <HeaderContainer>
-      <LogoContainer>
-        <LogoIcon src="/path-to-your-logo-icon.png" alt="Logo Icon" />
-        <LogoText>Logo</LogoText>
+      <LogoContainer style={logoContainerStyle}>
+        <div style={{ width: '30px', height: '30px', marginRight: '10px' }}>
+          <StyledLogoIcon src={logo} alt="Logo Icon" />
+        </div>
+        <h1 style={{ fontSize: '1.2rem', margin: '0' }}>BUDY</h1>
       </LogoContainer>
-      <AuthButtons>
-        <AuthButton>Login</AuthButton>
-        <AuthButton>Sign Up</AuthButton>
-      </AuthButtons>
+      <div style={{ display: 'flex', gap: '10px' }}>
+        <button
+          style={{
+            padding: '5px 10px',
+            color: 'black',
+            border: 'none',
+            borderRadius: '5px',
+            cursor: 'pointer',
+          }}
+        >
+          로그인
+        </button>
+        <button
+          style={{
+            padding: '5px 10px',
+            color: 'black',
+            border: 'none',
+            borderRadius: '5px',
+            cursor: 'pointer',
+          }}
+        >
+          회원가입
+        </button>
+      </div>
     </HeaderContainer>
   );
 };
