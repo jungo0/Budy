@@ -1,3 +1,4 @@
+
 package com.budy.route.entity;
 
 import com.budy.audit.Auditable;
@@ -30,3 +31,4 @@ public class RouteOrigin extends Auditable {
     @JoinColumn(name = "origin_id")
     private Origin origin;
 }
+

@@ -11,5 +11,4 @@ public class BudyApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BudyApplication.class, args);
 	}
-
 }

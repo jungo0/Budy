@@ -1,3 +1,4 @@
+
 package com.budy.tag.entity;
 
 import com.budy.audit.Auditable;
@@ -25,9 +26,10 @@ public class Tag extends Auditable {
     @Column(name = "tag_id")
     private Long tagId;
 
-    @Column(name = "tag_name")
+    @Column(name = "tag_name", nullable = false)
     private String tagName;
 
     @OneToMany(mappedBy = "tag", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<RouteTag> routeTagList = new ArrayList<>();
 }
+
