@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Main from './pages/main/Main';
 import Login from './pages/users/Login';
 import Mypage from './pages/mypage/Mypage';
@@ -25,11 +25,9 @@ export const routes = [
 ];
 
 export const RouteList = (
-  <Routes>
+  <Route>
     {routes.map((route, index) => (
       <Route key={index} path={route.path} element={route.element} />
     ))}
-  </Routes>
+  </Route>
 );
-
-export default RouteList;
