@@ -37,8 +37,11 @@ public class Route extends Auditable {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @Column(name = "route_title")
+    @Column(name = "route_title", nullable = false)
     private String routeTitle;
+
+    @Column(name = "route_image")
+    private String routeImage;
 
     @Column(name = "route_type")
     @Enumerated(EnumType.STRING)
@@ -50,40 +53,47 @@ public class Route extends Auditable {
 
     @Column(name = "route_status")
     @Enumerated(EnumType.STRING)
-    private RouteStatus routeStatus;@Column(name = "route_origin_latitude")
-    private Double routeOriginLatitude;
-
-    @Column(name = "route_origin_longitude")
-    private Double routeOriginLongitude;
+    private RouteStatus routeStatus;
 
     @Column(name = "route_vehicle")
+    @Enumerated(EnumType.STRING)
     private RouteVehicle routeVehicle;
 
-    @Column(name = "route_origin")
+    @Column(name = "route_origin", nullable = false)
     private String routeOrigin;
 
+    @Column(name = "route_origin_latitude", nullable = false)
+    private Double routeOriginLatitude;
 
+    @Column(name = "route_origin_longitude", nullable = false)
+    private Double routeOriginLongitude;
 
-    @Column(name = "route_origin_departure_time")
+    @Column(name = "route_origin_departure_datetime", nullable = false)
     private LocalDateTime routeOriginDepartureDateTime;
 
-    @Column(name = "route_destination")
+    @Column(name = "route_destination", nullable = false)
     private String routeDestination;
 
-    @Column(name = "route_destination_latitude")
+    @Column(name = "route_destination_latitude", nullable = false)
     private Double routeDestinationLatitude;
 
-    @Column(name = "route_destination_longitude")
+    @Column(name = "route_destination_longitude", nullable = false)
     private Double routeDestinationLongitude;
 
     @Column(name = "route_origin_departure_time")
     private LocalDateTime routeDestinationDepartureDateTime;
+
+    @Column(name = "route_cost", nullable = false)
+    private Integer routeCost;
 
     @OneToMany(mappedBy = "route", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<RouteOrigin> routeOriginList = new ArrayList<>();
 
     @OneToMany(mappedBy = "route", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<RouteTag> routeTagList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "route", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    private List<RouteSeat> routeSeatList = new ArrayList<>();
 
     public enum RouteType {
         SINGLE,

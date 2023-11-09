@@ -25,12 +25,13 @@ public class Origin extends Auditable {
     @Column(name = "origin_id")
     private Long originId;
 
-    @Column(name = "origin_latitude")
-    private Double originLatitude;
+    @Column(name = "origin_adjust_latitude", nullable = false)
+    private Double originAdjustLatitude;
 
-    @Column(name = "origin_longitude")
-    private Double originLongitude;
+    @Column(name = "origin_adjust_longitude", nullable = false)
+    private Double originAdjustLongitude;
 
     @OneToMany(mappedBy = "origin", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<RouteOrigin> routeOriginList = new ArrayList<>();
 }
+
