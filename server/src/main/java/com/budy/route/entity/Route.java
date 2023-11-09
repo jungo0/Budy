@@ -83,14 +83,17 @@ public class Route extends Auditable {
     @Column(name = "route_origin_departure_time")
     private LocalDateTime routeDestinationDepartureDateTime;
 
-    @Column(name = "route_price", nullable = false)
-    private Integer routePrice;
+    @Column(name = "route_cost", nullable = false)
+    private Integer routeCost;
 
     @OneToMany(mappedBy = "route", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<RouteOrigin> routeOriginList = new ArrayList<>();
 
     @OneToMany(mappedBy = "route", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<RouteTag> routeTagList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "route", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    private List<RouteSeat> routeSeatList = new ArrayList<>();
 
     public enum RouteType {
         SINGLE,

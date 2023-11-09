@@ -34,8 +34,8 @@ public class Registration extends Auditable {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @Column(name = "registration_price")
-    private Integer registrationPrice;
+    @Column(name = "registration_cost")
+    private Integer registrationCost;
 
     @Column(name = "registration_state")
     @Enumerated(EnumType.STRING)

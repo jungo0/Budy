@@ -42,9 +42,9 @@ public class Member extends Auditable {
     @Column(name = "member_image", nullable = false)
     private String memberImage;
 
-    @Column(name = "member_type")
+    @Column(name = "member_auth_type")
     @Enumerated(EnumType.STRING)
-    private MemberType memberType;
+    private AuthType memberAuthType;
 
     @Column(name = "member_role")
     @Enumerated(EnumType.STRING)
@@ -59,7 +59,7 @@ public class Member extends Auditable {
     @OneToMany(mappedBy = "member", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Registration> registrationList = new ArrayList<>();
 
-    public enum MemberType {
+    public enum AuthType {
         GOOGLE,
         KAKAO
     }

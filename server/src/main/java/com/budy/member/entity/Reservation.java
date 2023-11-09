@@ -31,6 +31,4 @@ public class Reservation extends Auditable {
     @JoinColumn(name = "route_id")
     private Route route;
 
-//    @Column(name = "reservation_seat")
-//    private String reservationSeat;
 }
