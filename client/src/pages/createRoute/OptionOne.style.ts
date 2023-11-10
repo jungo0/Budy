@@ -6,7 +6,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #dcdcdc;
+  background-color: var(--back-gray);
   position: relative;
 `;
 
@@ -90,7 +90,7 @@ export const InputBox = styled.textarea`
   width: 100%;
   height: 60px;
   resize: none;
-  background-color: #f0f0f0;
+  background-color: var(--gray);
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;

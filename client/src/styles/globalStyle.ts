@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
 :root{
-  --background: #FCFCFF;
+  --back-gray:#DCDCDC;
   --light-purple: #DDDCED;
   --purple: #AAA8E0;
   --dark-purple: #555388;
@@ -23,6 +23,8 @@ export const GlobalStyle = createGlobalStyle`
   --light-blue-purple: #8784D6;
   --light-pink: #FFB7B0;
   --pink: #F178C5;
+  --oragne:#D38E05;
+  --blue: #2D98ED;
 }
 html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,

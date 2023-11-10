@@ -6,7 +6,7 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  background-color: #f0f0f0;
+  background-color: var(--white);
 `;
 
 const LogoContainer = styled.div`
