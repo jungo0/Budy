@@ -10,7 +10,7 @@ import {
   TextContainer,
   InputBox,
   InputContainer,
-} from './OptionOne';
+} from './OptionOne.style';
 
 function OptionOne() {
   return (
