@@ -43,9 +43,9 @@ public class Route extends Auditable {
     @Column(name = "route_image")
     private String routeImage;
 
-    @Column(name = "route_type")
-    @Enumerated(EnumType.STRING)
-    private RouteType routeType;
+//    @Column(name = "route_type")
+//    @Enumerated(EnumType.STRING)
+//    private RouteType routeType;
 
     @Column(name = "route_itinerary")
     @Enumerated(EnumType.STRING)
@@ -92,13 +92,10 @@ public class Route extends Auditable {
     @OneToMany(mappedBy = "route", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<RouteTag> routeTagList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "route", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-    private List<RouteSeat> routeSeatList = new ArrayList<>();
-
-    public enum RouteType {
-        SINGLE,
-        REGULAR
-    }
+//    public enum RouteType {
+//        SINGLE,
+//        REGULAR
+//    }
 
     public enum RouteItinerary {
         ONE,

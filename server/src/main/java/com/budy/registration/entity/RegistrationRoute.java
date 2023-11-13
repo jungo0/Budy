@@ -1,9 +1,12 @@
 package com.budy.registration.entity;
 
 import com.budy.audit.Auditable;
+import com.budy.registration.entity.Registration.RegistrationState;
 import com.budy.route.entity.Route;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,5 +33,29 @@ public class RegistrationRoute extends Auditable {
     @JoinColumn(name = "route_id")
     private Route route;
 
+    @Column(name = "registration_route_age_range")
+    @Enumerated(EnumType.STRING)
+    private RegistrationRouteAgeRange registrationRouteAgeRange;
 
+    @Column(name = "registration_route_seat_number")
+    @Enumerated(EnumType.STRING)
+    private String registrationRouteSeatNumber;
+
+    @Column(name = "registration_route_state")
+    @Enumerated(EnumType.STRING)
+    private RegistrationRouteState registrationRouteState;
+
+    public enum RegistrationRouteAgeRange {
+        ADULT,
+        YOUTH,
+        CHILD
+    }
+
+    public enum RegistrationRouteState {
+
+        CANCELLATION,
+        SUSPENSION,
+        FAILURE,
+        COMPLETION
+    }
 }
