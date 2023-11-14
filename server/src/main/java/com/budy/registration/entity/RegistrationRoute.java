@@ -38,7 +38,6 @@ public class RegistrationRoute extends Auditable {
     private RegistrationRouteAgeRange registrationRouteAgeRange;
 
     @Column(name = "registration_route_seat_number")
-    @Enumerated(EnumType.STRING)
     private String registrationRouteSeatNumber;
 
     @Column(name = "registration_route_state")
