@@ -1,7 +1,6 @@
 package com.budy.route.entity;
 
-import com.budy.audit.Auditable;
-import com.budy.tag.entity.Tag;
+import com.budy.origin.entity.Origin;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,25 +8,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 @Entity
-public class RouteSeat extends Auditable {
+public class RouteOperationDateTime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "route_seat_id", nullable = false, unique = true)
-    private Long routeSeatId;
+    @Column(name ="route_operation_date_time_id")
+    private Long routeOperationDateTimeId;
 
     @ManyToOne
     @JoinColumn(name = "route_id")
     private Route route;
 
     @ManyToOne
-    @JoinColumn(name = "seat_id")
-    private Seat seat;
-
+    @JoinColumn(name = "operation_date_time_id")
+    private OperationDateTime operationDateTime;
 }
