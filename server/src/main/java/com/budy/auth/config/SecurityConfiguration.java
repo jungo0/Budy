@@ -4,7 +4,6 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 import com.budy.auth.filter.JwtVerificationFilter;
 import com.budy.auth.handler.MemberAuthenticationEntryPoint;
-import com.budy.auth.handler.MemberAuthenticationFailureHandler;
 import com.budy.auth.handler.MemberAuthenticationSuccessHandler;
 import com.budy.auth.jwt.JwtTokenizer;
 import com.budy.auth.utils.CustomAuthorityUtils;

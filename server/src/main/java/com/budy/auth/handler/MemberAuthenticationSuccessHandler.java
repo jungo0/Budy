@@ -64,20 +64,22 @@ public class MemberAuthenticationSuccessHandler extends SimpleUrlAuthenticationS
         String accessToken = jwtTokenizer.delegateAccessToken(member);
         String refreshToken = jwtTokenizer.delegateRefreshToken(member);
 
+        response.setHeader("Authorization", "Bearer " + accessToken);
+        response.addHeader("Set-Cookie", jwtTokenizer.createCookie(member).toString());
+        response.addHeader("Member-Role", member.getMemberRole().toString());
+
         String uri = createURI(accessToken, refreshToken).toString();
         getRedirectStrategy().sendRedirect(request, response, uri);
     }
 
     private URI createURI(String accessToken, String refreshToken) {
         MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<>();
-        queryParams.add("access_token", accessToken);
-        queryParams.add("refresh_token", refreshToken);
 
         return UriComponentsBuilder
             .newInstance()
             .scheme("http")
             .host("localhost")
-            .path("/receive-token.html")
+            .path("/index.html")
             .queryParams(queryParams)
             .build()
             .toUri();
