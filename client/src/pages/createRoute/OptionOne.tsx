@@ -15,7 +15,7 @@ import {
 function OptionOne() {
   return (
     <Container>
-      <h1 style={{ fontSize: '2rem', marginBottom: '50px' }}>노션 구분을 선택해주세요</h1>
+      <h1 style={{ fontSize: '1.8rem', marginBottom: '50px' }}>노션 구분을 선택해주세요</h1>
       <ButtonContainer>
         <Button color="lightblue">
           <TextOverlay>
