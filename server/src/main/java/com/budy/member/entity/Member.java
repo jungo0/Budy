@@ -38,13 +38,13 @@ public class Member extends Auditable {
 
     @Column(name = "member_phone_number", unique = true)
     private String memberPhoneNumber;
+//
+//    @Column(name = "member_image", nullable = false)
+//    private String memberImage;
 
-    @Column(name = "member_image", nullable = false)
-    private String memberImage;
-
-    @Column(name = "member_auth_type")
-    @Enumerated(EnumType.STRING)
-    private AuthType memberAuthType;
+//    @Column(name = "member_auth_type")
+//    @Enumerated(EnumType.STRING)
+//    private AuthType memberAuthType;
 
     @Column(name = "member_role")
     @Enumerated(EnumType.STRING)
