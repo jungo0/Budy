@@ -3,6 +3,8 @@ import cal from '../../assets/images/img_option/opt4_calender.png';
 import clock from '../../assets/images/img_option/opt4_clock.png';
 import mak from '../../assets/images/img_option/opt4_mak.png';
 import search from '../../assets/images/img_option/opt4_serach.png';
+import prev_arrow from '../../assets/images/img_option/prev_arrow.png';
+import next_arrow from '../../assets/images/img_option/next_arrow.png';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -110,22 +112,34 @@ export const ListContent = styled.button`
   margin-top: 5px;
   border-radius: 5px;
   cursor: pointer;
-  align-self: flex-end; /* 오른쪽 정렬 */
-  margin-bottom: 30px; /* 오른쪽 간격 조정 */
-  margin-left: auto; /* 나머지 공간을 왼쪽으로 정렬 */
+  align-self: flex-end;
+  margin-bottom: 30px;
+  margin-left: auto;
 `;
+const Arrow = styled.img`
+  width: 10px;
+  height: 20px;
+  margin-top: 20%;
+  cursor: pointer;
+  position: absolute;
+  bottom: -550%;
+`;
+const PrevArrow = styled(Arrow)``;
+const NextArrow = styled(Arrow)``;
 
 function OptionFour() {
   return (
     <Container>
       <Title>출발지 정보를 입력해주세요</Title>
       <ButtonContainer>
+        <PrevArrow src={prev_arrow} style={{ left: '-90px' }}></PrevArrow>
         <CalButton>
           <div style={{ fontSize: '1rem', color: 'var(--bright-gray)' }}>날짜 선택</div>
         </CalButton>
         <TimeButton>
           <div style={{ fontSize: '1rem', color: 'var(--bright-gray)' }}>시간 선택</div>
         </TimeButton>
+        <NextArrow src={next_arrow} style={{ right: '-90px' }}></NextArrow>
       </ButtonContainer>
       <InputBox placeholder="출발지 검색하기" />
       <ListContainer>

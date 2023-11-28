@@ -78,7 +78,7 @@ export const TextContainer = styled.div`
   width: 100%;
   max-width: 400px;
   box-sizing: border-box;
-  margin-top: -30%;
+  margin-top: -10%;
 `;
 
 export const InputContainer = styled.div`

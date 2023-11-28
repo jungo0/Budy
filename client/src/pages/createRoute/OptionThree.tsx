@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-
+import prev_arrow from '../../assets/images/img_option/prev_arrow.png';
+import next_arrow from '../../assets/images/img_option/next_arrow.png';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -58,25 +59,36 @@ export const InputBox = styled.textarea`
   border: 1px solid #ccc;
   box-sizing: border-box;
 `;
+const Arrow = styled.img`
+  width: 10px;
+  height: 20px;
+  margin-top: 20%;
+  cursor: pointer;
+  position: absolute;
+  bottom: 90%;
+`;
+const PrevArrow = styled(Arrow)``;
+const NextArrow = styled(Arrow)``;
 
 function OptionThree() {
   return (
     <Container>
       <h1 style={{ fontSize: '1.8rem', marginBottom: '50px' }}>노션 구분을 선택해주세요</h1>
       <ButtonContainer>
+        <PrevArrow src={prev_arrow} style={{ left: '-80px' }}></PrevArrow>
         <LeftButton>
           <div style={{ fontSize: '1.4rem' }}>단행노선</div>
         </LeftButton>
         <RightButton>
           <div style={{ fontSize: '1.4rem', color: 'white' }}>정기노선</div>
         </RightButton>
+        <NextArrow src={next_arrow} style={{ right: '-80px' }}></NextArrow>
       </ButtonContainer>
       <TextContainer>
         <p style={{ fontSize: '1.5rem', marginTop: '4rem', marginBottom: '-1.2rem' }}>
           노선에 태그를 추가해주세요
         </p>
       </TextContainer>
-
       <InputContainer>
         <InputBox placeholder="ex)수원역에서 광명역까지 한번에 가는 노선입니다." />
       </InputContainer>

@@ -1,5 +1,7 @@
+import styled from 'styled-components';
 import bus from '../../assets/images/img_option/opt2_bus.png';
-
+import prev_arrow from '../../assets/images/img_option/prev_arrow.png';
+import next_arrow from '../../assets/images/img_option/next_arrow.png';
 import {
   Container,
   ButtonContainer,
@@ -12,6 +14,17 @@ import {
   ButtonGroup,
   InputWrapper,
 } from './OptionTwo.style';
+const Arrow = styled.img`
+  width: 10px;
+  height: 20px;
+  margin-top: 20%;
+  cursor: pointer;
+  position: absolute;
+  bottom: 90%;
+`;
+const PrevArrow = styled(Arrow)``;
+const NextArrow = styled(Arrow)``;
+
 function OptionTwo() {
   return (
     <Container>
@@ -52,9 +65,9 @@ function OptionTwo() {
           </InputBox>
         </InputWrapper>
       </InputContainer>
-
       <h1 style={{ fontSize: '1.3rem', marginBottom: '-50px' }}>몇 인승이 필요하신가요?</h1>
       <ButtonContainer>
+        <PrevArrow src={prev_arrow} style={{ left: '-70px' }}></PrevArrow>
         <Button color="lightblue">
           <div
             style={{
@@ -97,6 +110,7 @@ function OptionTwo() {
             <BusImage src={bus} alt="Bus 2" />
           </div>
         </Button>
+        <NextArrow src={next_arrow} style={{ right: '-70px' }}></NextArrow>
       </ButtonContainer>
     </Container>
   );

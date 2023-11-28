@@ -1,5 +1,7 @@
 import bus1 from '../../assets/images/img_option/opt1_bus1.png';
 import bus2 from '../../assets/images/img_option/opt1_bus2.png';
+import prev_arrow from '../../assets/images/img_option/prev_arrow.png';
+import next_arrow from '../../assets/images/img_option/next_arrow.png';
 import {
   Container,
   ButtonContainer,
@@ -11,12 +13,33 @@ import {
   InputBox,
   InputContainer,
 } from './OptionOne.style';
+import styled from 'styled-components';
+const Arrow = styled.img`
+  width: 10px;
+  height: 20px;
+  margin-top: 20%;
+  cursor: pointer;
+  position: absolute;
+  bottom: 52%;
+`;
+const PrevArrow = styled(Arrow)``;
+const NextArrow = styled(Arrow)``;
 
 function OptionOne() {
   return (
     <Container>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginBottom: '20px',
+        }}
+      ></div>
       <h1 style={{ fontSize: '1.8rem', marginBottom: '50px' }}>노션 구분을 선택해주세요</h1>
       <ButtonContainer>
+        <PrevArrow src={prev_arrow} style={{ left: '-75px' }}></PrevArrow>
+
         <Button color="lightblue">
           <TextOverlay>
             <p>텍스트 1</p>
@@ -54,6 +77,7 @@ function OptionOne() {
             <BusImage src={bus2} alt="Bus 2" />
           </div>
         </Button>
+        <NextArrow src={next_arrow} style={{ right: '-75px' }}></NextArrow>
       </ButtonContainer>
       <TextContainer>
         <p style={{ fontSize: '1.5rem', marginTop: '4rem', marginBottom: '-1.2rem' }}>
