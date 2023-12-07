@@ -40,8 +40,8 @@ public class Route extends Auditable {
     @Column(name = "route_title", nullable = false)
     private String routeTitle;
 
-    @Column(name = "route_image")
-    private String routeImage;
+//    @Column(name = "route_image")
+//    private String routeImage;
 
     @Column(name = "route_type")
     @Enumerated(EnumType.STRING)
@@ -77,17 +77,20 @@ public class Route extends Auditable {
     @Column(name = "route_destination_longitude", nullable = false)
     private Double routeDestinationLongitude;
 
-    @Column(name = "route_cost", nullable = false)
-    private Integer routeCost;
+    @Column(name = "route_price", nullable = false)
+    private Integer routePrice;
 
     @OneToMany(mappedBy = "route", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<RouteOrigin> routeOriginList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "route", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-    private List<RouteTag> routeTagList = new ArrayList<>();
+//    @OneToMany(mappedBy = "route", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+//    private List<RouteTag> routeTagList = new ArrayList<>();
 
     @OneToMany(mappedBy = "route", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-    private List<RouteOperationDateTime> routeOperationDateTimeList = new ArrayList<>();
+    private List<RouteOriginDepartureDateTime> routeOriginDepartureDateTimeList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "route", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    private List<RouteDestinationDepartureDateTime> routeDestinationDepartureDateTimeList = new ArrayList<>();
 
     public enum RouteType {
         SINGLE,
