@@ -32,6 +32,22 @@ spring:
             scope:
               - email
               - profile
+          kakao:
+            clientId: ${KAKAO_REST_API_ID}
+            clientSecret: ${KAKAO_SECRET_KEY}
+            clientAuthenticationMethod: client_secret_post
+            redirectUri: http://localhost:8080/login/oauth2/kakao
+            authorizationGrantType: authorization_code
+            clientName: kakao
+            scope:
+              - profile_nickname
+        provider:
+          kakao:
+            authorizationUri: https://kauth.kakao.com/oauth/authorize
+            tokenUri: https://kauth.kakao.com/oauth/token
+            userInfoUri: https://kapi.kakao.com/v2/user/me
+            userNameAttribute: id
+#http://localhost:8080/logout/oauth2/kakao
 
   output:
     ansi:
