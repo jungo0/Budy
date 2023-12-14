@@ -50,8 +50,8 @@ public class Member extends Auditable {
     @Enumerated(EnumType.STRING)
     private MemberRole memberRole;
 
-    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-    private List<Route> routeList = new ArrayList<>();
+//    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+//    private List<Route> routeList = new ArrayList<>();
 
     @OneToMany(mappedBy = "member", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Reservation> reservationList = new ArrayList<>();
