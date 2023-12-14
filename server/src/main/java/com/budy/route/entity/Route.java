@@ -33,9 +33,9 @@ public class Route extends Auditable {
     @Column(name = "route_id", nullable = false, unique = true)
     private Long routeId;
 
-    @ManyToOne
-    @JoinColumn(name = "member_id")
-    private Member member;
+//    @ManyToOne
+//    @JoinColumn(name = "member_id")
+//    private Member member;
 
     @Column(name = "route_title", nullable = false)
     private String routeTitle;

@@ -1,13 +1,16 @@
 package com.budy.route.mapper;
 
 import com.budy.route.dto.RouteCreateDto;
+import com.budy.route.dto.RouteInfoDto;
 import com.budy.route.entity.Route;
 import com.budy.route.entity.Route.RouteItinerary;
 import com.budy.route.entity.Route.RouteStatus;
 import com.budy.route.entity.Route.RouteType;
 import com.budy.route.entity.Route.RouteVehicle;
+import com.budy.dto.PageInfoDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
+import org.springframework.data.domain.Page;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface RouteMapper {
@@ -28,5 +31,21 @@ public interface RouteMapper {
         route.setRoutePrice(routeCreateDto.getRoutePrice());
 
         return route;
+    }
+
+    default RouteInfoDto routeToRouteInfo(Route route){
+        return RouteInfoDto.builder()
+            .routeId(route.getRouteId())
+            .routeTitle(route.getRouteTitle())
+            .build();
+    }
+
+    default PageInfoDto routePageToPageInfo(Page<Route> routePage){
+        return PageInfoDto.builder()
+            .page(routePage.getNumber())
+            .size(routePage.getSize())
+            .totalPage(routePage.getTotalPages())
+            .totalElement(routePage.getTotalElements())
+            .build();
     }
 }
