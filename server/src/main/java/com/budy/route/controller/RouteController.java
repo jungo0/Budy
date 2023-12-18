@@ -1,13 +1,16 @@
 package com.budy.route.controller;
 
 import com.budy.route.dto.RouteCreateDto;
+import com.budy.route.dto.RouteDetailsDto;
 import com.budy.route.dto.RouteInfoDto;
 import com.budy.route.dto.RouteInfoPageDto;
 import com.budy.route.service.RouteService;
 import java.util.List;
+import javax.validation.constraints.Positive;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,5 +38,13 @@ public class RouteController {
         RouteInfoPageDto routeInfoPageDto = routeService.getRouteList(page);
 
         return new ResponseEntity<>(routeInfoPageDto, HttpStatus.OK);
+    }
+
+    @GetMapping("/route/{route-id}")
+    public ResponseEntity getRouteDetails(@PathVariable("route-id") @Positive long routeId) {
+
+        RouteDetailsDto routeDetailsDto = routeService.getRouteDetails(routeId);
+
+        return new ResponseEntity<>(routeDetailsDto, HttpStatus.OK);
     }
 }
