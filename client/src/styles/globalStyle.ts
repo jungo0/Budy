@@ -25,6 +25,7 @@ export const GlobalStyle = createGlobalStyle`
   --pink: #F178C5;
   --oragne:#D38E05;
   --blue: #2D98ED;
+  --option: #00439D;
 }
 html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
