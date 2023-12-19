@@ -1,6 +1,7 @@
 package com.budy.route.mapper;
 
 import com.budy.route.dto.RouteCreateDto;
+import com.budy.route.dto.RouteDetailsDto;
 import com.budy.route.dto.RouteInfoDto;
 import com.budy.route.entity.Route;
 import com.budy.route.entity.Route.RouteItinerary;
@@ -46,6 +47,23 @@ public interface RouteMapper {
             .size(routePage.getSize())
             .totalPage(routePage.getTotalPages())
             .totalElement(routePage.getTotalElements())
+            .build();
+    }
+
+    default RouteDetailsDto routeToRouteDetailsDto(Route route) {
+        return RouteDetailsDto.builder()
+            .routeId(route.getRouteId())
+            .routeTitle(route.getRouteTitle())
+            .routeType(route.getRouteType())
+            .routeStatus(route.getRouteStatus())
+            .routeVehicle(route.getRouteVehicle())
+            .routeOrigin(route.getRouteOrigin())
+            .routeOriginLatitude(route.getRouteOriginLatitude())
+            .routeOriginLongitude(route.getRouteOriginLongitude())
+            .routeDestination(route.getRouteDestination())
+            .routeDestinationLatitude(route.getRouteDestinationLatitude())
+            .routeDestinationLongitude(route.getRouteDestinationLongitude())
+            .routePrice(route.getRoutePrice())
             .build();
     }
 }

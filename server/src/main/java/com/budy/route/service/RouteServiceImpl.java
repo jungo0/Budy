@@ -1,9 +1,12 @@
 package com.budy.route.service;
 
 import com.budy.auth.utils.CustomSecurityUtils;
+import com.budy.exception.BusinessLogicException;
+import com.budy.exception.ExceptionCode;
 import com.budy.member.entity.Member;
 import com.budy.member.repository.MemberRepository;
 import com.budy.route.dto.RouteCreateDto;
+import com.budy.route.dto.RouteDetailsDto;
 import com.budy.route.dto.RouteInfoDto;
 import com.budy.route.dto.RouteInfoPageDto;
 import com.budy.route.entity.Route;
@@ -62,4 +65,23 @@ public class RouteServiceImpl implements RouteService {
             .build();
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public RouteDetailsDto getRouteDetails(long routeId){
+
+        Route findRoute = findVerifiedRoute(routeId);
+
+        RouteDetailsDto routeDetailsDto = routeMapper.routeToRouteDetailsDto(findRoute);
+
+        // RouteDepartureDateTime 추가
+        // RouteOrigin 추가
+
+        return routeDetailsDto;
+    }
+
+    @Transactional(readOnly = true)
+    public Route findVerifiedRoute(long routeId) {
+        return routeRepository.findById(routeId)
+            .orElseThrow(() -> new BusinessLogicException(ExceptionCode.ROUTE_NOT_FOUND));
+    }
 }
