@@ -79,6 +79,13 @@ public class RouteServiceImpl implements RouteService {
         return routeDetailsDto;
     }
 
+    @Override
+    @Transactional
+    public void deleteRoute(long routeId) {
+        Route findRoute = findVerifiedRoute(routeId);
+        routeRepository.delete(findRoute);
+    }
+
     @Transactional(readOnly = true)
     public Route findVerifiedRoute(long routeId) {
         return routeRepository.findById(routeId)

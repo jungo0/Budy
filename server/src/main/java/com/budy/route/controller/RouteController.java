@@ -9,6 +9,7 @@ import java.util.List;
 import javax.validation.constraints.Positive;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,5 +47,13 @@ public class RouteController {
         RouteDetailsDto routeDetailsDto = routeService.getRouteDetails(routeId);
 
         return new ResponseEntity<>(routeDetailsDto, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/route/{route-id}")
+    public ResponseEntity deleteRoute(@PathVariable("route-id") @Positive long routeId){
+
+        routeService.deleteRoute(routeId);
+
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }
