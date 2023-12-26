@@ -18,6 +18,17 @@ import {
 import { useEffect, useRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import styled from 'styled-components';
+
+const StyledDatePicker = styled(DatePicker)`
+  /* Custom styles for react-datepicker */
+  font-size: 24px; /* Adjust font size as needed */
+`;
+
+const StyledContainer = styled.div`
+  /* Add custom styles for the container if needed */
+`;
+
 function OptionFour() {
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [startTime, setStartTime] = useState<Date | null>(null);
@@ -79,7 +90,7 @@ function OptionFour() {
         <NextArrow src={next_arrow} style={{ right: '-90px' }}></NextArrow>
       </ButtonContainer>
       {isDatePickerVisible && (
-        <DatePicker
+        <StyledDatePicker
           selected={startDate}
           onChange={handleDateChange}
           dateFormat="yyyy-MM-dd"
@@ -88,7 +99,7 @@ function OptionFour() {
         />
       )}
       {isTimePickerVisible && (
-        <DatePicker
+        <StyledDatePicker
           selected={startTime}
           onChange={handleTimeChange}
           showTimeSelect
