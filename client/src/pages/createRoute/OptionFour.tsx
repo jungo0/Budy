@@ -21,12 +21,24 @@ import 'react-datepicker/dist/react-datepicker.css';
 import styled from 'styled-components';
 
 const StyledDatePicker = styled(DatePicker)`
-  /* Custom styles for react-datepicker */
-  font-size: 24px; /* Adjust font size as needed */
+  font-size: 20px;
+  color: var(--dark-gray);
 `;
 
 const StyledContainer = styled.div`
-  /* Add custom styles for the container if needed */
+  /* 커스텀 스타일 */
+`;
+const DarkBackground = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
 `;
 
 function OptionFour() {
@@ -72,6 +84,51 @@ function OptionFour() {
     }
   }, [isDatePickerVisible, isTimePickerVisible]);
 
+  const closeDatePicker = () => {
+    setDatePickerVisible(false);
+  };
+
+  const closeTimePicker = () => {
+    setTimePickerVisible(false);
+  };
+
+  useEffect(() => {
+    const handleDocumentClick = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+
+      // 날짜 선택 창이 열려있고, 클릭이 날짜 선택 창 외부에서 발생한 경우 창을 닫음
+      if (isDatePickerVisible && datePickerRef.current && !datePickerRef.current.contains(target)) {
+        closeDatePicker();
+      }
+
+      // 시간 선택 창이 열려있고, 클릭이 시간 선택 창 외부에서 발생한 경우 창을 닫음
+      if (isTimePickerVisible && timePickerRef.current && !timePickerRef.current.contains(target)) {
+        closeTimePicker();
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      // 날짜 선택 창이 열려있고, Enter 키가 눌린 경우 창을 닫음
+      if (isDatePickerVisible && event.key === 'Enter') {
+        closeDatePicker();
+      }
+
+      // 시간 선택 창이 열려있고, Enter 키가 눌린 경우 창을 닫음
+      if (isTimePickerVisible && event.key === 'Enter') {
+        closeTimePicker();
+      }
+    };
+
+    // 컴포넌트가 마운트될 때 이벤트 리스너를 추가하고, 언마운트될 때 제거함
+    document.addEventListener('click', handleDocumentClick);
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('click', handleDocumentClick);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isDatePickerVisible, isTimePickerVisible]);
+
   return (
     <Container>
       <Title>출발지 정보를 입력해주세요</Title>
@@ -90,24 +147,28 @@ function OptionFour() {
         <NextArrow src={next_arrow} style={{ right: '-90px' }}></NextArrow>
       </ButtonContainer>
       {isDatePickerVisible && (
-        <StyledDatePicker
-          selected={startDate}
-          onChange={handleDateChange}
-          dateFormat="yyyy-MM-dd"
-          ref={datePickerRef}
-          popperPlacement="bottom-start"
-        />
+        <DarkBackground>
+          <StyledDatePicker
+            selected={startDate}
+            onChange={handleDateChange}
+            dateFormat="yyyy-MM-dd"
+            ref={datePickerRef}
+            popperPlacement="bottom-start"
+          />
+        </DarkBackground>
       )}
       {isTimePickerVisible && (
-        <StyledDatePicker
-          selected={startTime}
-          onChange={handleTimeChange}
-          showTimeSelect
-          showTimeSelectOnly
-          timeCaption="시간"
-          dateFormat="h:mm aa"
-          ref={timePickerRef}
-        />
+        <DarkBackground>
+          <StyledDatePicker
+            selected={startTime}
+            onChange={handleTimeChange}
+            showTimeSelect
+            showTimeSelectOnly
+            timeCaption="시간"
+            dateFormat="h:mm aa"
+            ref={timePickerRef}
+          />
+        </DarkBackground>
       )}
       <InputBox placeholder="출발지 검색하기" />
       <ListContainer>
