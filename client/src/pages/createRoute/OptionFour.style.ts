@@ -63,7 +63,7 @@ export const TextContainer = styled.div`
 
 export const InputBox = styled.textarea`
   margin: 15px 0;
-  width: 31.6%;
+  width: 320px;
   height: 40px;
   resize: none;
   background-color: var(--gray);
