@@ -1,6 +1,8 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import prev_arrow from '../../assets/images/img_option/prev_arrow.png';
 import next_arrow from '../../assets/images/img_option/next_arrow.png';
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -59,6 +61,7 @@ export const InputBox = styled.textarea`
   border: 1px solid #ccc;
   box-sizing: border-box;
 `;
+
 const Arrow = styled.img`
   width: 10px;
   height: 20px;
@@ -67,22 +70,41 @@ const Arrow = styled.img`
   position: absolute;
   bottom: 90%;
 `;
+
 const PrevArrow = styled(Arrow)``;
 const NextArrow = styled(Arrow)``;
 
 function OptionThree() {
+  const navigate = useNavigate();
+
+  const handlePrevClick = () => {
+    navigate('/option-two');
+  };
+
+  const handleNextClick = () => {
+    navigate('/option-four');
+  };
+
   return (
     <Container>
       <h1 style={{ fontSize: '1.8rem', marginBottom: '50px' }}>노션 구분을 선택해주세요</h1>
       <ButtonContainer>
-        <PrevArrow src={prev_arrow} style={{ left: '-80px' }}></PrevArrow>
+        <PrevArrow
+          src={prev_arrow}
+          style={{ left: '-110px', bottom: '-10px' }}
+          onClick={handlePrevClick}
+        ></PrevArrow>
         <LeftButton>
           <div style={{ fontSize: '1.4rem' }}>단행노선</div>
         </LeftButton>
         <RightButton>
           <div style={{ fontSize: '1.4rem', color: 'white' }}>정기노선</div>
         </RightButton>
-        <NextArrow src={next_arrow} style={{ right: '-80px' }}></NextArrow>
+        <NextArrow
+          src={next_arrow}
+          style={{ right: '-110px', bottom: '-10px' }}
+          onClick={handleNextClick}
+        ></NextArrow>
       </ButtonContainer>
       <TextContainer>
         <p style={{ fontSize: '1.5rem', marginTop: '4rem', marginBottom: '-1.2rem' }}>

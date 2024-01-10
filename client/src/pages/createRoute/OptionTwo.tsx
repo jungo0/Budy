@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import bus from '../../assets/images/img_option/opt2_bus.png';
 import prev_arrow from '../../assets/images/img_option/prev_arrow.png';
 import next_arrow from '../../assets/images/img_option/next_arrow.png';
+import { useNavigate } from 'react-router-dom';
 import {
   Container,
   ButtonContainer,
@@ -26,6 +27,15 @@ const PrevArrow = styled(Arrow)``;
 const NextArrow = styled(Arrow)``;
 
 function OptionTwo() {
+  const navigate = useNavigate();
+
+  const handlePrevClick = () => {
+    navigate('/option-one');
+  };
+
+  const handleNextClick = () => {
+    navigate('/option-three');
+  };
   return (
     <Container>
       <TextContainer>
@@ -67,7 +77,7 @@ function OptionTwo() {
       </InputContainer>
       <h1 style={{ fontSize: '1.3rem', marginBottom: '-50px' }}>몇 인승이 필요하신가요?</h1>
       <ButtonContainer>
-        <PrevArrow src={prev_arrow} style={{ left: '-70px' }}></PrevArrow>
+        <PrevArrow src={prev_arrow} style={{ left: '-70px' }} onClick={handlePrevClick}></PrevArrow>
         <Button color="lightblue">
           <div
             style={{
@@ -110,7 +120,11 @@ function OptionTwo() {
             <BusImage src={bus} alt="Bus 2" />
           </div>
         </Button>
-        <NextArrow src={next_arrow} style={{ right: '-70px' }}></NextArrow>
+        <NextArrow
+          src={next_arrow}
+          style={{ right: '-70px' }}
+          onClick={handleNextClick}
+        ></NextArrow>
       </ButtonContainer>
     </Container>
   );

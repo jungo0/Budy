@@ -1,5 +1,6 @@
 import prev_arrow from '../../assets/images/img_option/prev_arrow.png';
 import next_arrow from '../../assets/images/img_option/next_arrow.png';
+import { useNavigate } from 'react-router-dom';
 import {
   ButtonContainer,
   CalButton,
@@ -48,6 +49,8 @@ function OptionFour() {
   const [isTimePickerVisible, setTimePickerVisible] = useState(false);
   const datePickerRef = useRef(null);
   const timePickerRef = useRef(null);
+
+  const navigate = useNavigate();
 
   const handleCalButtonClick = () => {
     setDatePickerVisible(!isDatePickerVisible);
@@ -128,12 +131,18 @@ function OptionFour() {
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [isDatePickerVisible, isTimePickerVisible]);
+  const handlePrevClick = () => {
+    navigate('/option-three');
+  };
 
+  const handleNextClick = () => {
+    navigate('/option-five');
+  };
   return (
     <Container>
       <Title>출발지 정보를 입력해주세요</Title>
       <ButtonContainer>
-        <PrevArrow src={prev_arrow} style={{ left: '-90px' }}></PrevArrow>
+        <PrevArrow src={prev_arrow} style={{ left: '-90px' }} onClick={handlePrevClick}></PrevArrow>
         <CalButton onClick={handleCalButtonClick} onFocus={handleCalButtonInputChange}>
           <div style={{ fontSize: '1rem', color: 'var(--bright-gray)' }}>
             {startDate ? startDate.toLocaleDateString() : '날짜 선택'}
@@ -144,7 +153,11 @@ function OptionFour() {
             {startTime ? startTime.toLocaleTimeString() : '시간 선택'}
           </div>
         </TimeButton>
-        <NextArrow src={next_arrow} style={{ right: '-90px' }}></NextArrow>
+        <NextArrow
+          src={next_arrow}
+          style={{ right: '-90px' }}
+          onClick={handleNextClick}
+        ></NextArrow>
       </ButtonContainer>
       {isDatePickerVisible && (
         <DarkBackground>
