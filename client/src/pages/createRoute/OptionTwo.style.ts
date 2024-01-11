@@ -27,6 +27,10 @@ export const Button = styled.button`
   position: relative;
   border-radius: 8px 8px 0 0;
   overflow: hidden;
+
+  &:active {
+    transform: scale(0.98);
+  }
 `;
 
 export const BusImage = styled.img`
@@ -126,4 +130,15 @@ export const PlusMinusButton = styled.button`
   justify-content: center;
   font-weight: bold;
   color: var(--dark-gray);
+  margin: 0 10px;
+
+  span {
+    width: 20px;
+    text-align: center;
+    display: inline-block;
+  }
+
+  &:active {
+    background-color: #999;
+  }
 `;

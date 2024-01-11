@@ -15,6 +15,7 @@ import {
   ButtonGroup,
   InputWrapper,
 } from './OptionTwo.style';
+import { useState } from 'react';
 const Arrow = styled.img`
   width: 10px;
   height: 20px;
@@ -25,9 +26,13 @@ const Arrow = styled.img`
 `;
 const PrevArrow = styled(Arrow)``;
 const NextArrow = styled(Arrow)``;
-
 function OptionTwo() {
   const navigate = useNavigate();
+
+  // State variables for counts
+  const [adultCount, setAdultCount] = useState(0);
+  const [teenCount, setTeenCount] = useState(0);
+  const [childCount, setChildCount] = useState(0);
 
   const handlePrevClick = () => {
     navigate('/option-one');
@@ -36,6 +41,23 @@ function OptionTwo() {
   const handleNextClick = () => {
     navigate('/option-three');
   };
+
+  const handleCountChange = (type: string, value: number) => {
+    switch (type) {
+      case 'adult':
+        setAdultCount((prevCount) => Math.max(0, prevCount + value));
+        break;
+      case 'teen':
+        setTeenCount((prevCount) => Math.max(0, prevCount + value));
+        break;
+      case 'child':
+        setChildCount((prevCount) => Math.max(0, prevCount + value));
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <Container>
       <TextContainer>
@@ -48,9 +70,9 @@ function OptionTwo() {
           <InputBox>
             성인
             <ButtonGroup>
-              <PlusMinusButton>-</PlusMinusButton>
-              <span>0</span>
-              <PlusMinusButton>+</PlusMinusButton>
+              <PlusMinusButton onClick={() => handleCountChange('adult', -1)}>-</PlusMinusButton>
+              <span>{adultCount}</span>
+              <PlusMinusButton onClick={() => handleCountChange('adult', 1)}>+</PlusMinusButton>
             </ButtonGroup>
           </InputBox>
         </InputWrapper>
@@ -58,9 +80,9 @@ function OptionTwo() {
           <InputBox>
             청소년
             <ButtonGroup>
-              <PlusMinusButton>-</PlusMinusButton>
-              <span>0</span>
-              <PlusMinusButton>+</PlusMinusButton>
+              <PlusMinusButton onClick={() => handleCountChange('teen', -1)}>-</PlusMinusButton>
+              <span>{teenCount}</span>
+              <PlusMinusButton onClick={() => handleCountChange('teen', 1)}>+</PlusMinusButton>
             </ButtonGroup>
           </InputBox>
         </InputWrapper>
@@ -68,9 +90,9 @@ function OptionTwo() {
           <InputBox>
             어린이
             <ButtonGroup>
-              <PlusMinusButton>-</PlusMinusButton>
-              <span>0</span>
-              <PlusMinusButton>+</PlusMinusButton>
+              <PlusMinusButton onClick={() => handleCountChange('child', -1)}>-</PlusMinusButton>
+              <span>{childCount}</span>
+              <PlusMinusButton onClick={() => handleCountChange('child', 1)}>+</PlusMinusButton>
             </ButtonGroup>
           </InputBox>
         </InputWrapper>

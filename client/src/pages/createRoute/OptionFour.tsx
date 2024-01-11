@@ -26,9 +26,7 @@ const StyledDatePicker = styled(DatePicker)`
   color: var(--dark-gray);
 `;
 
-const StyledContainer = styled.div`
-  /* 커스텀 스타일 */
-`;
+const StyledContainer = styled.div``;
 const DarkBackground = styled.div`
   position: fixed;
   top: 0;
