@@ -115,7 +115,9 @@ export const InputWrapper = styled.div`
 
 export const ButtonGroup = styled.div`
   display: flex;
-  gap: 5px;
+  gap: 15px;
+  align-items: center;
+  width: 120px;
 `;
 
 export const PlusMinusButton = styled.button`
@@ -125,20 +127,16 @@ export const PlusMinusButton = styled.button`
   border: none;
   border-radius: 40%;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-weight: bold;
   color: var(--dark-gray);
-  margin: 0 10px;
-
-  span {
-    width: 20px;
-    text-align: center;
-    display: inline-block;
-  }
+  margin: 0;
 
   &:active {
     background-color: #999;
   }
+`;
+
+export const CountSpan = styled.span`
+  font-size: 14px;
+  width: 20px;
 `;

@@ -10,6 +10,7 @@ import {
   BusImage,
   TextContainer,
   InputBox,
+  CountSpan,
   InputContainer,
   PlusMinusButton,
   ButtonGroup,
@@ -71,7 +72,7 @@ function OptionTwo() {
             성인
             <ButtonGroup>
               <PlusMinusButton onClick={() => handleCountChange('adult', -1)}>-</PlusMinusButton>
-              <span>{adultCount}</span>
+              <CountSpan>{adultCount}</CountSpan>
               <PlusMinusButton onClick={() => handleCountChange('adult', 1)}>+</PlusMinusButton>
             </ButtonGroup>
           </InputBox>
@@ -81,7 +82,7 @@ function OptionTwo() {
             청소년
             <ButtonGroup>
               <PlusMinusButton onClick={() => handleCountChange('teen', -1)}>-</PlusMinusButton>
-              <span>{teenCount}</span>
+              <CountSpan>{teenCount}</CountSpan>
               <PlusMinusButton onClick={() => handleCountChange('teen', 1)}>+</PlusMinusButton>
             </ButtonGroup>
           </InputBox>
@@ -91,7 +92,7 @@ function OptionTwo() {
             어린이
             <ButtonGroup>
               <PlusMinusButton onClick={() => handleCountChange('child', -1)}>-</PlusMinusButton>
-              <span>{childCount}</span>
+              <CountSpan>{childCount}</CountSpan>
               <PlusMinusButton onClick={() => handleCountChange('child', 1)}>+</PlusMinusButton>
             </ButtonGroup>
           </InputBox>
