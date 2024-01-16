@@ -18,7 +18,9 @@ public enum ExceptionCode {
     REFRESH_TOKEN_EXPIRED(401, "Refresh Token Expired"),
     CART_NOT_FOUND(404, "Cart not found"),
     CHATROOM_NOT_FOUND(404,"Chatroom not found"),
-    SAME_ID_CHAT_ROOM(401,"Customer ID and Seller ID are the same");
+    SAME_ID_CHAT_ROOM(401,"Customer ID and Seller ID are the same"),
+    PAY_CANCEL(404, "Payment has been canceled"),
+    PAY_FAILED(400,"진행 중인 거래가 있습니다. 잠시 후 다시 시도해주세요.");
 
     @Getter
     private int status;
