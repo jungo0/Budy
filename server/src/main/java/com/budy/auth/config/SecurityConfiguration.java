@@ -110,18 +110,19 @@ public class SecurityConfiguration implements WebMvcConfigurer {
     @Bean
     public AuthenticationSuccessHandler successHandler() {
         return ((request, response, authentication) -> {
-            DefaultOAuth2User defaultOAuth2User = (DefaultOAuth2User) authentication.getPrincipal();
 
-            String id = defaultOAuth2User.getAttributes().get("id").toString();
-            String body = String.format("{\"id\":\"%s\"}", id);
+                DefaultOAuth2User defaultOAuth2User = (DefaultOAuth2User) authentication.getPrincipal();
 
-            response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-            response.setCharacterEncoding(StandardCharsets.UTF_8.name());
+                String id = defaultOAuth2User.getAttributes().get("id").toString();
+                String body = String.format("{\"id\":\"%s\"}", id);
 
-            PrintWriter writer = response.getWriter();
-            writer.println(body);
-            writer.flush();
+                response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+                response.setCharacterEncoding(StandardCharsets.UTF_8.name());
+
+                PrintWriter writer = response.getWriter();
+                writer.println(body);
+                writer.flush();
         });
-    }
 
+    }
 }
