@@ -1,7 +1,12 @@
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css, StyledProps } from 'styled-components';
 import prev_arrow from '../../assets/images/img_option/prev_arrow.png';
 import next_arrow from '../../assets/images/img_option/next_arrow.png';
+import { useState } from 'react';
+
+interface ButtonProps {
+  focus?: boolean;
+}
 
 export const Container = styled.div`
   display: flex;
@@ -18,22 +23,30 @@ export const ButtonContainer = styled.div`
   position: relative;
 `;
 
-export const Button = styled.button`
+const buttonStyles = css`
   width: 140px;
   height: 60px;
   background-color: white;
   border: 1px solid var(--light-gray);
   cursor: pointer;
+  font-size: 1.2rem;
   overflow: hidden;
 `;
 
-export const LeftButton = styled(Button)`
-  border-radius: 10px 0px 0px 10px;
+export const Button = styled.button<ButtonProps>`
+  ${buttonStyles}
 `;
 
-export const RightButton = styled(Button)`
+export const LeftButton = styled(Button)<ButtonProps>`
+  border-radius: 10px 0px 0px 10px;
+  background-color: ${(props) => (props.focus ? 'var(--option)' : 'white')};
+  color: ${(props) => (props.focus ? 'white' : 'black')};
+`;
+
+export const RightButton = styled(Button)<ButtonProps>`
   border-radius: 0px 10px 10px 0px;
-  background-color: var(--option);
+  background-color: ${(props) => (props.focus ? 'var(--option)' : 'white')};
+  color: ${(props) => (props.focus ? 'white' : 'black')};
 `;
 
 export const TextContainer = styled.div`
@@ -76,6 +89,7 @@ const NextArrow = styled(Arrow)``;
 
 function OptionThree() {
   const navigate = useNavigate();
+  const [selectedButton, setSelectedButton] = useState<'left' | 'right' | null>(null);
 
   const handlePrevClick = () => {
     navigate('/option-two');
@@ -94,11 +108,11 @@ function OptionThree() {
           style={{ left: '-110px', bottom: '-10px' }}
           onClick={handlePrevClick}
         ></PrevArrow>
-        <LeftButton>
-          <div style={{ fontSize: '1.4rem' }}>단행노선</div>
+        <LeftButton onClick={() => setSelectedButton('left')} focus={selectedButton === 'left'}>
+          단행노선
         </LeftButton>
-        <RightButton>
-          <div style={{ fontSize: '1.4rem', color: 'white' }}>정기노선</div>
+        <RightButton onClick={() => setSelectedButton('right')} focus={selectedButton === 'right'}>
+          정기노선
         </RightButton>
         <NextArrow
           src={next_arrow}
