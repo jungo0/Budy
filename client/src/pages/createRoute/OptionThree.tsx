@@ -24,8 +24,8 @@ export const ButtonContainer = styled.div`
 `;
 
 const buttonStyles = css`
-  width: 140px;
-  height: 60px;
+  width: 130px;
+  height: 50px;
   background-color: white;
   border: 1px solid var(--light-gray);
   cursor: pointer;
@@ -89,7 +89,7 @@ const NextArrow = styled(Arrow)``;
 
 function OptionThree() {
   const navigate = useNavigate();
-  const [selectedButton, setSelectedButton] = useState<'left' | 'right' | null>(null);
+  const [selectedButton, setSelectedButton] = useState<'left' | 'right' | null>('left');
 
   const handlePrevClick = () => {
     navigate('/option-two');
